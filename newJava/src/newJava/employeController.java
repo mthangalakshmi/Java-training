@@ -22,10 +22,11 @@ public class employeController implements Employeinterface   {
 		System.out.println("Employee Added Succesfully");
 	}
 	public void viewEmployee() {
-		Iterator i = emplist.iterator();
-		while(i.hasNext()) {
-			System.out.println(i.next());
-		}
+//		Iterator i = emplist.iterator();
+//		while(i.hasNext()) {
+//			System.out.println(i.next());
+//		}
+		emplist.forEach(lis->System.out.println(lis));
 	}
 	@Override
 	public void serial() throws IOException {
