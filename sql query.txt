@@ -1,0 +1,13 @@
+No 34:
+ List the emps who are senior to Miller.
+select * from EMP 
+where HIREDATE <ANY(select HIREDATE from EMP where ENAME='MILLER' );
+
+ List the emps whose Job is same as either Allen or Sal is more than Allen sal.
+
+select *
+from EMP
+WHERE JOB IN(select JOB from EMP where ENAME ='ALLEN')or SAL >ANY(select SAL from EMP where ENAME='ALLEN');
+
+ List the emps whose Sal is greater than Blake salary.
+select * from EMP where sal>ANY(select sal from EMP where ENAME='BLAKE')
