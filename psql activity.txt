@@ -1,0 +1,48 @@
+Write PL/SQL code in Cursor to display employee names and
+
+salary
+declare
+    e_enam emp.ename%type;
+    e_salry emp.sal%type;
+    cursor mycur is select ename,sal from emp;
+begin
+    if not mycur%ISOPEN then
+    open mycur;
+    end if;
+    loop
+    fetch mycur into e_enam,e_salry;
+    exit when mycur%NOTFOUND;    
+    dbms_output.put_line(e_enam || ' '  || e_salry); 
+    end loop;
+    close mycur;
+end;
+/
+
+To write a  Cursor to display the list of employees who are Working as a Managers or Analyst
+
+
+declare
+emprec emp%rowtype;
+cursor mycur is select * from emp where job ='MANAGER' or job='ANALYST';
+begin
+open mycur;
+loop
+fetch mycur into emprec;
+exit when mycur%NOTFOUND;    
+dbms_output.put_line(emprec.ename || '    ' || emprec.sal); 
+end loop;
+close mycur;
+end;
+/
+
+
+Write PL/SQL code in Procedure to find the Reverse of the  number.
+
+declare
+N_Num NUMBER := 234;
+N_Rev NUMBER := 0;
+begin
+SELECT REVERSE(TO_CHAR(N_Num)) INTO N_Rev FROM Dual;
+DBMS_OUTPUT.PUT_LINE (N_Rev);
+END;
+/
